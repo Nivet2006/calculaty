@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/logo.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+<!--meta tags starts from here-->
+    <meta name="title" content="Calculaty">
+    <meta name="description" content="Calculaty-A calculator made by minds0987 wpgithub.com/nived-devgithub.com/minds0987Proudly powered by Vercel, gitub">
+    <meta name="keywords" content="maths, calculaty, calculator, minds0987, minds0987 wp, minds0987wp, nived-dev, minds, 0987, ">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="nived-dev">
+<!--meta -->
+  <title>Calculaty</title>
+  <link rel='stylesheet' href='https://fonts.gstatic.com'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&amp;display=swap'>
+  
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+body.dark-mode {
+  background-color: #1f1f1f;
+}
+#display,
+#solutions {
+  margin: 0;
+  height: auto;
+  min-height: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  color: #747474;
+  font-size: 46px;
+  line-height: 60px;
+  font-weight: 600;
+  padding: 5px 15px;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: right;
+  font-weight: 300;
+  overflow: hidden;
+}
+#solutions {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 46px;
+}
+.dark-mode #display {
+  color: #9e9e9e;
+}
+.dark-mode #solutions {
+  color: #dbdbdb;
+}
+button {
+  margin: 10px;
+  width: 80px;
+  height: 80px;
+  font-size: 36px;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  color: #747474;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.light-mode button {
+  background-color: #f1f3f6;
+  box-shadow: -6px -6px 20px 0 #ffffff, 6px 6px 20px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+.light-mode button:hover,
+.light-mode button:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #fff;
+}
+.dark-mode button {
+  background-color: #1f1f1f;
+  box-shadow: -6px -6px 20px 0 #2b2b2b, 6px 6px 20px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 3px 0 #000000;
+}
+.dark-mode button:hover,
+.dark-mode button:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #2b2b2b;
+}
+.dark-mode button {
+  background-color: #1f1f1f;
+  box-shadow: -6px -6px 20px 0 #000000, 6px 6px 20px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+.dark-mode button:hover,
+.dark-mode button:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #000;
+}
+td {
+  max-width: 100px;
+}
+#equal {
+  background-color: #ffbd2e;
+  color: white;
+}
+.main-box {
+  border-collapse: collapse;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 425px;
+}
+.inner-box {
+  margin: 4px;
+}
+.light-mode button.dark-btn {
+  background-color: #dedede;
+}
+.light-mode button.dark-btn:hover,
+.light-mode button.dark-btn:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #dedede;
+}
+button.blue-btn {
+  background-color: #6f9bdc;
+  color: #fff;
+}
+button.blue-btn:hover,
+button.blue-btn:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #6f9bdc;
+}
+button#equal:hover,
+button#equal:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #ffbd2e;
+}
+.light-mode .main-box {
+  background-color: #f1f3f6;
+  box-shadow: -3px -3px 10px 0 #fff, 3px 3px 10px rgba(0, 0, 0, 0.08),
+    inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 12px solid #f1f3f6;
+}
+.dark-mode .main-box {
+  background-color: #1f1f1f;
+  box-shadow: -3px -3px 10px 0 #323232, 3px 3px 10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  border: 12px solid #1f1f1f;
+}
+.dark-mode button.dark-btn {
+  background-color: #000000;
+}
+.dark-mode button.dark-btn:hover,
+.dark-mode button.dark-btn:focus {
+  box-shadow: inset 4px 4px 10px 0 rgba(0, 0, 0, 0.08),
+    inset -4px -4px 10px 0 #000000;
+}
+button.mode-change {
+  padding: 12px 30px;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 12px;
+  font-size: 20px;
+  line-height: 28px;
+
+  box-shadow: none !important;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  display: block;
+  margin: 15px 0 15px auto !important;
+}
+.light-mode button.mode-change {
+  color: #fff;
+  background-color: #1f1f1f;
+}
+.dark-mode button.mode-change {
+  background-color: #fff;
+  color: #1f1f1f;
+}
+.mode-btn {
+  text-align: right;
+}
+.light-mode button.mode-change:hover {
+  background-color: #2b2b2b;
+}
+.dark-mode button.mode-change:hover {
+  color: #1f1f1f;
+}
+/* responsive css */
+@media (max-width: 767px) {
+  button {
+    margin: 8px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  button.mode-change {
+    padding: 10px 26px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.link_href {
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background-color: #d1d1d17c;
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <body id="body" onkeydown="return myKeyPress(event)" class="light-mode" data="dark-mode">
+  <div class="container">
+    <div class="mode-btn"> <button type="button" onclick="change_mode()" class="mode-change" id="mode-change">Change
+        mode</button></div>
+    <table class="main-box" cellspacing=0 cellpadding=0>
+      <thead class="display-box">
+        <tr>
+          <th colspan="5">
+            <div class="calc-display" id="display"></div>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="5">
+            <div class="calc-display" id="solutions"></div>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="inner-box">
+        <tr>
+          <td>
+            <button class=" " id="clear">C</button>
+          </td>
+          <td>
+            <button class=" dark-btn" id="sign">+/-</button>
+          </td>
+          <td>
+            <button class=" dark-btn operator" id="percent">%</button>
+          </td>
+          <td>
+            <button class=" blue-btn operator">÷</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="  num">7</button>
+          </td>
+          <td>
+            <button class="  num">8</button>
+          </td>
+          <td>
+            <button class="  num">9</button>
+          </td>
+          <td>
+            <button class=" blue-btn operator">x</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="  num">4</button>
+          </td>
+          <td>
+            <button class="  num">5</button>
+          </td>
+          <td>
+            <button class="  num">6</button>
+          </td>
+          <td>
+            <button class=" blue-btn  operator">-</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="  num">1</button>
+          </td>
+          <td>
+            <button class="  num">2</button>
+          </td>
+          <td>
+            <button class="  num">3</button>
+          </td>
+          <td>
+            <button class=" blue-btn operator">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class=" num" id="zero-button">0</button>
+          </td>
+          <td>
+            <button class=" num" id="zero-button" >00</button>
+          </td>
+          <td>
+            <button class="  num" id="decimal-point">.</button>
+          </td>
+          <td>
+            <button class=" " id="equal">=</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>
+    <div class="mode-btn"> <button type="button" onclick="change_mode()" class="mode-change" id="mode-change">Change
+      mode</button></div>
+      <div class="link_href">
+        A <a class="link_href" href="https://github.com/minds0987">minds0987 wp</a> | Made with 🖤 &amp; &lt;/&gt; | Hosted on <a class="link_href" href="https://vercel.com/">vercel</a>
+      </div>
+  </footer>
+</body>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  
+      <script id="rendered-js" >
+function change_mode() {
+  var element = document.getElementById("body");
+  element.classList.toggle("light-mode");
+  element.classList.toggle("dark-mode");
+}
+/*  document.getElementById('display').innerHTML = "";
+    document.getElementById('solutions').innerHTML = ""; */
+const display = document.querySelector("#display");
+const solutions = document.querySelector("#solutions");
+const clearBtn = document.querySelector("#clear");
+const signBtn = document.querySelector("#sign");
+const percentageBtn = document.querySelector("#percent");
+const equalBtn = document.querySelector("#equal");
+const operators = ["+", "-", "*", "/", "%"];
+let numberString = "";
+let equation = "";
+let result = null;
+let operator = "";
+// event listener for when a number is clicked
+document.addEventListener("click", e => {
+  if (!e.target.matches(".num")) return;
+  // if the number string is "", start a new number and remove the display text
+  if (numberString === "") {
+    display.innerText = "";
+  }
+  // if result is not null, clear the calculation
+  if (result != null) {
+    clear();
+  }
+  // get the button value, add it to the display and the number string
+  const value = e.target.innerText;
+  if (value === ".") {
+    checkDecimal();
+    return;
+  }
+  display.innerText += value;
+  numberString = display.innerText;
+});
+// event listener for when an operator is clicked
+document.addEventListener("click", e => {
+  if (!e.target.matches(".operator")) return;
+  // if the result is not null, add the result to the equation, else add the number string
+  if (result != null) {
+    equation = result.toString();
+    solutions.innerText = equation;
+    result = null;
+  } else {
+    equation += numberString;
+  }
+  // get the operator
+  operator = e.target.innerText;
+  if (operator === "x") {
+    operator = "*";
+  }
+  if (operator === "÷") {
+    operator = "/";
+  }
+  /* numberString = "" */
+  checkOperator();
+});
+// event listener for the +/- button
+signBtn.addEventListener("click", () => {
+  const convertDisplay = parseFloat(display.innerText);
+  // if the result is not null, use the result and add or remove "-"
+  if (result !== null) {
+    equation = "";
+    if (convertDisplay > 0) {
+      display.innerText = "-" + result.toString();
+      numberString = display.innerText;
+    } else if (convertDisplay < 0) {
+      const string = result.toString();
+      const negativeSign = display.innerText.substr(string[0], 1);
+      display.innerText = string.replace(negativeSign, "");
+      numberString = display.innerText;
+    }
+    result = null;
+    return;
+  }
+  // if the result is null, use the currently displayed text
+  if (convertDisplay > 0) {
+    display.innerText = "-" + display.innerText;
+    numberString = display.innerText;
+  } else if (convertDisplay < 0) {
+    const negativeSign = display.innerText.substr(display.innerText[0], 1);
+    display.innerText = display.innerText.replace(negativeSign, "");
+    numberString = display.innerText;
+  }
+});
+// event listener for the clear button
+clearBtn.addEventListener("click", clear);
+// event listener for equals button
+equalBtn.addEventListener("click", () => {
+  /*  equation += numberString 
+       result = eval(equation) */
+  result = eval(numberString);
+  solutions.innerText = result;
+});
+// do not allow two decimal points in a row
+function checkDecimal() {
+  const lastChar = numberString.charAt(numberString.length - 1);
+  if (lastChar === ".") return;else
+  {
+    numberString += ".";
+    solutions.innerText = numberString;
+  }
+}
+// do not allow two operators in a row
+function checkOperator() {
+  const lastChar = equation.charAt(equation.length - 1);
+  for (let i = 0; i < operators.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+    if (operators[i] === lastChar) {
+      const remove = equation.substr(equation.length - 1, 1);
+      equation = equation.replace(remove, operator);
+      return;
+    }
+  }window.CP.exitedLoop(0);
+  equation += operator;
+  display.innerText = equation;
+}
+// clear calc
+function clear() {
+  display.innerHTML = "";
+  solutions.innerHTML = "";
+  numberString = "";
+  equation = "";
+  result = null;
+}
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
